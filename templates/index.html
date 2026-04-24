@@ -9,9 +9,9 @@
 <body>
     <h1>Fundsachen</h1>
 
-    {% if einkaufsliste %}
+    {% if Fundsachen %}
         <ul>
-            {% for item in einkaufsliste %}
+            {% for item in Fundsachen %}
                 <li>{{ item['id'] }} – {{ item['name'] }}</li>
             {% endfor %}
         </ul>
