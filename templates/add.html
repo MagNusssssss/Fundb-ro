@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neue Fundsache hinzufügen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+<body>
+    <h1>Neue Fundsache hinzufügen</h1>
+
+    <form action="{{ url_for('add') }}" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="description">Beschreibung:</label>
+            <textarea id="description" name="description"></textarea>
+        </div>
+        <div>
+            <label for="found_date">Funddatum:</label>
+            <input type="date" id="found_date" name="found_date" required>
+        </div>
+        <div>
+            <label for="location">Fundort:</label>
+            <input type="text" id="location" name="location" required>
+        </div>
+        <div>
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                <option value="gefunden">gefunden</option>
+                <option value="abgegeben">abgegeben</option>
+                <option value="verloren">verloren</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Hinzufügen</button>
+            <a href="{{ url_for('index') }}">Zurück</a>
+        </div>
+    </form>
+</body>
+</html>
+<html>  
+
+</html>

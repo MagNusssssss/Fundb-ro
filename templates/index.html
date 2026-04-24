@@ -12,42 +12,15 @@
     {% if Fundsachen %}
         <ul>
             {% for item in Fundsachen %}
-                <li>{{ item['id'] }} – {{ item['name'] }}</li>
+                <li>{{ item['id'] }} – {{ item['name'] }} - {{ item['description'] }} - {{ item['found_date'] }} - {{ item['location'] }} - {{ item['status'] }}</li>
             {% endfor %}
         </ul>
     {% else %}
         <p>Keine Einträge vorhanden.</p>
     {% endif %}
 
-    <h2>Neue Fundsache hinzufügen</h2>
-    <form action="/add" method="post">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div>
-            <label for="description">Beschreibung:</label>
-            <textarea id="description" name="description"></textarea>
-        </div>
-        <div>
-            <label for="found_date">Funddatum:</label>
-            <input type="date" id="found_date" name="found_date" required>
-        </div>
-        <div>
-            <label for="location">Fundort:</label>
-            <input type="text" id="location" name="location" required>
-        </div>
-        <div>
-            <label for="status">Status:</label>
-            <select id="status" name="status" required>
-                <option value="gefunden">gefunden</option>
-                <option value="abgegeben">abgegeben</option>
-                <option value="verloren">verloren</option>
-            </select>
-        </div>
-        <div>
-            <button type="submit">Hinzufügen</button>
-        </div>
-    </form>
+    <p>
+        <a class="button" href="{{ url_for('add') }}">Neue Fundsache hinzufügen</a>
+    </p>
 </body>
 </html>

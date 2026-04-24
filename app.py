@@ -15,8 +15,12 @@ def index():
     items = conn.execute('SELECT * FROM Fundsachen').fetchall()
     conn.close()
     return render_template('index.html', Fundsachen=items)
-@app.route('/add', methods=['POST'])
+@app.route('/add', methods=['GET', 'POST'])
 def add():
+    if request.method == 'GET':
+        return render_template('add.html')
+
+   
     name = request.form.get('name')
     description = request.form.get('description')
     found_date = request.form.get('found_date')
@@ -25,8 +29,7 @@ def add():
 
     
     if not name or not found_date or not location or not status:
-        
-        return redirect(url_for('index'))
+        return redirect(url_for('add'))
 
     conn = get_db_connection()
     conn.execute('INSERT INTO Fundsachen (name, description, found_date, location, status) VALUES (?, ?, ?, ?, ?)',
