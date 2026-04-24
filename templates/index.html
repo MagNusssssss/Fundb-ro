@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundsachen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Fundsachen</h1>
+
+    {% if einkaufsliste %}
+        <ul>
+            {% for item in einkaufsliste %}
+                <li>{{ item['id'] }} – {{ item['name'] }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Keine Einträge vorhanden.</p>
+    {% endif %}
+</body>
+</html>
