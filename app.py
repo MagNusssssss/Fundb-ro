@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -15,9 +15,6 @@ def index():
     items = conn.execute('SELECT * FROM Fundsachen').fetchall()
     conn.close()
     return render_template('index.html', Fundsachen=items)
-
-if __name__ == '__main__':
-    app.run(debug=True)
 @app.route('/add', methods=['POST'])
 def add():
     name = request.form.get('name')
@@ -26,11 +23,19 @@ def add():
     location = request.form.get('location')
     status = request.form.get('status')
 
+    
+    if not name or not found_date or not location or not status:
+        
+        return redirect(url_for('index'))
+
     conn = get_db_connection()
     conn.execute('INSERT INTO Fundsachen (name, description, found_date, location, status) VALUES (?, ?, ?, ?, ?)',
                  (name, description, found_date, location, status))
     conn.commit()
     conn.close()
 
-    from flask import redirect, url_for
     return redirect(url_for('index'))
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
