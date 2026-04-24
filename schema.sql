@@ -4,5 +4,5 @@ CREATE TABLE Fundsachen(
     description TEXT,
     found_date INTEGER NOT NULL,
     location TEXT NOT NULL,
-    status TEXT
+    status TEXT NOT NULL
 );
