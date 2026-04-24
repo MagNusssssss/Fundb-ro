@@ -1,8 +1,12 @@
-CREATE TABLE Fundsachen(
-    id INTEGER PRIMARY KEY NOT NULL,
-    name TEXT NOT NULL,
+DROP TABLE IF EXISTS Fundsachen;
+
+CREATE TABLE Fundsachen (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
     description TEXT,
-    found_date INTEGER NOT NULL,
+    found_date DATE NOT NULL,
     location TEXT NOT NULL,
-    status TEXT
+    status TEXT NOT NULL
 );
+
+
